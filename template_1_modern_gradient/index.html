@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICTECH 2027 - International Conference on Technology & Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #ec4899;
+            --accent: #14b8a6;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #1e293b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: var(--text) !important;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            display: flex;
+            align-items: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2), transparent);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            animation: slideInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: slideInUp 0.8s ease 0.4s backwards;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-lg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary-lg:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary-lg {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary-lg:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(99, 102, 241, 0.05));
+        }
+
+        .about-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .about-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .about-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .about-box p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Tracks Section */
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .track-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .track-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .track-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .track-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .track-card p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* Dates Section */
+        .dates-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .dates-section .section-title {
+            color: white;
+        }
+
+        .dates-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .date-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .date-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .date-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .date-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Speakers Section */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .speaker-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .speaker-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .speaker-info {
+            padding: 1.5rem;
+        }
+
+        .speaker-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .speaker-title {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .speaker-org {
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        /* Committee Section */
+        .committee-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(20, 184, 166, 0.05));
+        }
+
+        .committee-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 0.8rem 1.8rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--text);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .member-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+        }
+
+        .member-name {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .member-affiliation {
+            color: #64748b;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Submission Section */
+        .submission-section {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(236, 72, 153, 0.05));
+        }
+
+        .submission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        .guidelines-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .guidelines-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .guideline-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .guideline-item:last-child {
+            border-bottom: none;
+        }
+
+        .guideline-check {
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .guideline-text {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .timeline-desc {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Registration Section */
+        .registration-section {
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .pricing-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features li {
+            color: #64748b;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        .pricing-features li:before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        /* Venue Section */
+        .venue-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(20, 184, 166, 0.05));
+        }
+
+        .venue-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .venue-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .venue-detail {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .venue-detail:last-child {
+            border-bottom: none;
+        }
+
+        .venue-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .venue-text h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .venue-text p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .venue-map {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.8rem;
+            border-radius: 6px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        textarea.form-input {
+            resize: none;
+            min-height: 120px;
+        }
+
+        .contact-info-box {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-text p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark), rgba(99, 102, 241, 0.1));
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+            padding-left: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .submission-grid,
+            .contact-grid,
+            .venue-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary-lg,
+            .btn-secondary-lg {
+                width: 100%;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .navbar-nav {
+                padding-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-microchip"></i> ICTECH 2027</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tracks">Tracks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#speakers">Speakers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#submission">Submission</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#registration">Registration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-cta">Register Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <span class="badge">🚀 Innovation Summit 2027</span>
+                    <h1>International Conference on Technology & Innovation</h1>
+                    <p>Bridging the gap between research and industry. Connect with thought leaders and researchers from around the world.</p>
+                    <div class="cta-buttons">
+                        <a href="#submission" class="btn-primary-lg">Submit Paper</a>
+                        <a href="#contact" class="btn-secondary-lg">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image" style="text-align: center; font-size: 8rem; color: rgba(99, 102, 241, 0.2);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About the Conference</h2>
+            <p class="section-subtitle">ICTECH 2027 brings together researchers, practitioners, and industry experts to share innovations and forge collaborations.</p>
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="about-box reveal">
+                        <h3>📊 Conference Stats</h3>
+                        <p>Expected to attract 500+ participants from 40+ countries, featuring 200+ research papers and 30+ keynote sessions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="about-box reveal">
+                        <h3>🏆 Indexing & Recognition</h3>
+                        <p>All papers indexed in Scopus and IEEE Xplore. Best papers awarded and published in premium international journals.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="about-box reveal">
+                        <h3>🌍 Global Network</h3>
+                        <p>Build connections with leading researchers and industry professionals from academia and enterprise sectors worldwide.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="about-box reveal">
+                        <h3>💡 Innovation Focus</h3>
+                        <p>Dedicated tracks for emerging technologies including AI, IoT, Blockchain, Cybersecurity, and Sustainable Computing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracks Section -->
+    <section id="tracks" class="tracks-section">
+        <div class="container">
+            <h2 class="section-title">Research Tracks</h2>
+            <p class="section-subtitle">Explore our diverse tracks covering cutting-edge technology domains and innovative applications.</p>
+            <div class="tracks-grid">
+                <div class="track-card reveal">
+                    <div class="track-icon">🤖</div>
+                    <h4>Artificial Intelligence</h4>
+                    <p>Deep learning, machine learning, natural language processing, and AI applications in various domains.</p>
+                </div>
+                <div class="track-card reveal">
+                    <div class="track-icon">☁️</div>
+                    <h4>Cloud Computing</h4>
+                    <p>Cloud architecture, distributed systems, serverless computing, and edge computing solutions.</p>
+                </div>
+                <div class="track-card reveal">
+                    <div class="track-icon">🔐</div>
+                    <h4>Cybersecurity</h4>
+                    <p>Network security, encryption, threat detection, and advanced security mechanisms.</p>
+                </div>
+                <div class="track-card reveal">
+                    <div class="track-icon">📱</div>
+                    <h4>IoT & Sensors</h4>
+                    <p>Internet of Things, sensor networks, smart devices, and real-time data processing.</p>
+                </div>
+                <div class="track-card reveal">
+                    <div class="track-icon">⛓️</div>
+                    <h4>Blockchain</h4>
+                    <p>Distributed ledger technology, smart contracts, cryptocurrency, and decentralized applications.</p>
+                </div>
+                <div class="track-card reveal">
+                    <div class="track-icon">🌱</div>
+                    <h4>Green Computing</h4>
+                    <p>Sustainable technology, energy efficiency, environmental impact, and green practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Dates -->
+    <section id="dates" class="dates-section">
+        <div class="container">
+            <h2 class="section-title">Important Dates</h2>
+            <p class="section-subtitle">Mark your calendar with these crucial deadlines</p>
+            <div class="dates-grid">
+                <div class="date-item reveal">
+                    <div class="date-label">📄 Abstract Submission</div>
+                    <div class="date-value">September 15, 2026</div>
+                </div>
+                <div class="date-item reveal">
+                    <div class="date-label">📝 Full Paper Deadline</div>
+                    <div class="date-value">October 31, 2026</div>
+                </div>
+                <div class="date-item reveal">
+                    <div class="date-label">✅ Acceptance Notification</div>
+                    <div class="date-value">December 15, 2026</div>
+                </div>
+                <div class="date-item reveal">
+                    <div class="date-label">📋 Camera Ready</div>
+                    <div class="date-value">January 30, 2027</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers" class="speakers-section">
+        <div class="container">
+            <h2 class="section-title">Keynote Speakers</h2>
+            <p class="section-subtitle">Learn from industry leaders and renowned researchers</p>
+            <div class="speakers-grid">
+                <div class="speaker-card reveal">
+                    <div class="speaker-image">👨‍💼</div>
+                    <div class="speaker-info">
+                        <h4>Prof. Arun Kumar Singh</h4>
+                        <div class="speaker-title">AI Research Lead</div>
+                        <div class="speaker-org">IIT Delhi · India</div>
+                    </div>
+                </div>
+                <div class="speaker-card reveal">
+                    <div class="speaker-image">👩‍💼</div>
+                    <div class="speaker-info">
+                        <h4>Dr. Sarah Johnson</h4>
+                        <div class="speaker-title">Cloud Computing Expert</div>
+                        <div class="speaker-org">MIT · USA</div>
+                    </div>
+                </div>
+                <div class="speaker-card reveal">
+                    <div class="speaker-image">👨‍💼</div>
+                    <div class="speaker-info">
+                        <h4>Prof. Liu Wei</h4>
+                        <div class="speaker-title">Cybersecurity Pioneer</div>
+                        <div class="speaker-org">Tsinghua University · China</div>
+                    </div>
+                </div>
+                <div class="speaker-card reveal">
+                    <div class="speaker-image">👩‍💼</div>
+                    <div class="speaker-info">
+                        <h4>Dr. Maria Rodriguez</h4>
+                        <div class="speaker-title">Blockchain Specialist</div>
+                        <div class="speaker-org">Stanford · USA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committee Section -->
+    <section id="committee" class="committee-section">
+        <div class="container">
+            <h2 class="section-title">Organizing Committee</h2>
+            <p class="section-subtitle">Meet the experts organizing this year's conference</p>
+            <div class="committee-tabs">
+                <button class="tab-button active" onclick="switchTab('general')">General Chairs</button>
+                <button class="tab-button" onclick="switchTab('program')">Program Committee</button>
+                <button class="tab-button" onclick="switchTab('technical')">Technical Committee</button>
+                <button class="tab-button" onclick="switchTab('advisory')">Advisory Board</button>
+            </div>
+            <div id="committee-content" class="committee-grid">
+                <div class="member-card reveal">
+                    <div class="member-name">Prof. Rajesh Kumar</div>
+                    <div class="member-affiliation">General Chair<br>IIT Bombay</div>
+                </div>
+                <div class="member-card reveal">
+                    <div class="member-name">Dr. Priya Sharma</div>
+                    <div class="member-affiliation">Co-Chair<br>NIT Trichy</div>
+                </div>
+                <div class="member-card reveal">
+                    <div class="member-name">Prof. Vikram Singh</div>
+                    <div class="member-affiliation">Organizing Chair<br>IIT Kanpur</div>
+                </div>
+                <div class="member-card reveal">
+                    <div class="member-name">Dr. Anjali Nair</div>
+                    <div class="member-affiliation">Finance Chair<br>BITS Pilani</div>
+                </div>
+                <div class="member-card reveal">
+                    <div class="member-name">Prof. Arjun Desai</div>
+                    <div class="member-affiliation">Publications<br>Delhi University</div>
+                </div>
+                <div class="member-card reveal">
+                    <div class="member-name">Dr. Neha Gupta</div>
+                    <div class="member-affiliation">Logistics<br>VIT Chennai</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submission Section -->
+    <section id="submission" class="submission-section">
+        <div class="container">
+            <h2 class="section-title">Paper Submission</h2>
+            <p class="section-subtitle">Guidelines and process for submitting your research paper</p>
+            <div class="submission-grid">
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Step 1: Prepare Manuscript</h4>
+                            <div class="timeline-date">Use IEEE or Springer template</div>
+                            <div class="timeline-desc">Papers should be 6-10 pages including references. Download templates from conference website.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Step 2: Plagiarism Check</h4>
+                            <div class="timeline-date">Turnitin/iThenticate report required</div>
+                            <div class="timeline-desc">Similarity index must be below 20%. Include the report with your submission.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Step 3: Submit Online</h4>
+                            <div class="timeline-date">Via EasyChair platform</div>
+                            <div class="timeline-desc">Create an account, fill details, upload PDF and plagiarism report.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Step 4: Review Process</h4>
+                            <div class="timeline-date">Double-blind peer review</div>
+                            <div class="timeline-desc">Each paper reviewed by 2-3 international experts. Results in 4-6 weeks.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="guidelines-box reveal">
+                    <h3>Submission Guidelines</h3>
+                    <div class="guideline-item">
+                        <div class="guideline-check">✓</div>
+                        <div class="guideline-text">Original, unpublished research not submitted elsewhere</div>
+                    </div>
+                    <div class="guideline-item">
+                        <div class="guideline-check">✓</div>
+                        <div class="guideline-text">IEEE or Springer LNCS format required</div>
+                    </div>
+                    <div class="guideline-item">
+                        <div class="guideline-check">✓</div>
+                        <div class="guideline-text">6-10 pages including all figures and references</div>
+                    </div>
+                    <div class="guideline-item">
+                        <div class="guideline-check">✓</div>
+                        <div class="guideline-text">PDF format only, maximum 10 MB file size</div>
+                    </div>
+                    <div class="guideline-item">
+                        <div class="guideline-check">✓</div>
+                        <div class="guideline-text">Plagiarism report must be attached (≤20% similarity)</div>
+                    </div>
+                    <div class="guideline-item">
+                        <div class="guideline-check">✓</div>
+                        <div class="guideline-text">At least one author must register and present</div>
+                    </div>
+                    <div class="guideline-item">
+                        <div class="guideline-check">✓</div>
+                        <div class="guideline-text">Papers indexed in Scopus and IEEE Xplore</div>
+                    </div>
+                    <div class="guideline-item">
+                        <div class="guideline-check">✓</div>
+                        <div class="guideline-text">Best paper awards in each track</div>
+                    </div>
+                    <a href="#contact" class="btn-primary-lg" style="margin-top: 1rem; width: 100%; text-align: center;">Submit Paper on EasyChair →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="registration-section">
+        <div class="container">
+            <h2 class="section-title">Registration Fees</h2>
+            <p class="section-subtitle">Choose the package that best suits your needs</p>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <h3 class="pricing-title">Student Author</h3>
+                    <div class="pricing-price">₹3,500</div>
+                    <div class="pricing-period">per accepted paper</div>
+                    <ul class="pricing-features">
+                        <li>3-day conference access</li>
+                        <li>Digital proceedings</li>
+                        <li>Certificate of presentation</li>
+                        <li>Lunch & refreshments</li>
+                        <li>Scopus indexing</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary-lg" style="width: 100%; text-align: center;">Register</a>
+                </div>
+                <div class="pricing-card featured reveal">
+                    <div class="pricing-badge">⭐ RECOMMENDED</div>
+                    <h3 class="pricing-title">Professional Author</h3>
+                    <div class="pricing-price">₹6,500</div>
+                    <div class="pricing-period">per accepted paper</div>
+                    <ul class="pricing-features">
+                        <li>3-day conference access</li>
+                        <li>Printed proceedings</li>
+                        <li>Certificate of presentation</li>
+                        <li>Lunch & refreshments</li>
+                        <li>Scopus indexing</li>
+                        <li>Workshops & tutorials</li>
+                        <li>Networking dinner</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary-lg" style="width: 100%; text-align: center;">Register</a>
+                </div>
+                <div class="pricing-card reveal">
+                    <h3 class="pricing-title">Listener/Delegate</h3>
+                    <div class="pricing-price">₹2,000</div>
+                    <div class="pricing-period">per person</div>
+                    <ul class="pricing-features">
+                        <li>3-day conference access</li>
+                        <li>Digital proceedings</li>
+                        <li>Certificate of participation</li>
+                        <li>Lunch & refreshments</li>
+                        <li>All sessions access</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary-lg" style="width: 100%; text-align: center;">Register</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section id="venue" class="venue-section">
+        <div class="container">
+            <h2 class="section-title">Venue & Location</h2>
+            <p class="section-subtitle">Join us at a world-class venue in the heart of the city</p>
+            <div class="venue-grid">
+                <div class="venue-info reveal">
+                    <h3>International Convention Centre</h3>
+                    <div class="venue-detail">
+                        <div class="venue-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="venue-text">
+                            <h4>Location</h4>
+                            <p>New Delhi, India</p>
+                        </div>
+                    </div>
+                    <div class="venue-detail">
+                        <div class="venue-icon"><i class="fas fa-calendar"></i></div>
+                        <div class="venue-text">
+                            <h4>Conference Dates</h4>
+                            <p>March 12-14, 2027 (9:00 AM - 6:00 PM)</p>
+                        </div>
+                    </div>
+                    <div class="venue-detail">
+                        <div class="venue-icon"><i class="fas fa-plane"></i></div>
+                        <div class="venue-text">
+                            <h4>Airport Distance</h4>
+                            <p>15 km from Indira Gandhi International Airport</p>
+                        </div>
+                    </div>
+                    <div class="venue-detail">
+                        <div class="venue-icon"><i class="fas fa-hotel"></i></div>
+                        <div class="venue-text">
+                            <h4>Accommodation</h4>
+                            <p>Shuttle services & preferred hotel rates available</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="venue-map reveal">
+                    📍
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Have questions? We're here to help</p>
+            <div class="contact-grid">
+                <div class="contact-form reveal">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="First Name" required>
+                        <input type="text" class="form-input" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group full">
+                        <input type="email" class="form-input" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group full">
+                        <input type="text" class="form-input" placeholder="Institution/Organization" required>
+                    </div>
+                    <div class="form-group full">
+                        <input type="text" class="form-input" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group full">
+                        <textarea class="form-input" placeholder="Your Message..."></textarea>
+                    </div>
+                    <button class="btn-primary-lg" style="width: 100%; padding: 1rem; text-align: center;">Send Message →</button>
+                </div>
+                <div class="contact-info-box reveal">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@ictech2027.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+91 11 4567 8900</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                        <div class="contact-text">
+                            <h4>Website</h4>
+                            <p>www.ictech2027.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+                        <div class="contact-text">
+                            <h4>Address</h4>
+                            <p>Convention Centre, New Delhi - 110001</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h5><i class="fas fa-microchip"></i> ICTECH 2027</h5>
+                    <p>International Conference on Technology & Innovation. Fostering research excellence and global collaboration in technology.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h5>Navigate</h5>
+                    <a href="#about">About</a>
+                    <a href="#tracks">Research Tracks</a>
+                    <a href="#speakers">Speakers</a>
+                    <a href="#committee">Committee</a>
+                </div>
+                <div class="footer-column">
+                    <h5>Authors</h5>
+                    <a href="#submission">Submission Guidelines</a>
+                    <a href="#">Paper Templates</a>
+                    <a href="#registration">Registration</a>
+                    <a href="#">Camera Ready</a>
+                </div>
+                <div class="footer-column">
+                    <h5>Resources</h5>
+                    <a href="#venue">Venue Info</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#">Sponsorship</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2027 ICTECH. All rights reserved.</p>
+                <p>Designed & Developed with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(reveal => observer.observe(reveal));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Committee tab switching
+        function switchTab(tab) {
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
